@@ -1,10 +1,10 @@
 # dynamicAMR
-
-## Descrition
+forked from [HenningScheufler/multiDimAMR](https://github.com/HenningScheufler/multiDimAMR)
+## Description
 
 dynamic meshing with load balancing for hexahedral meshes in 3D and 2D
 
-Library is based on:
+The library is based on:
 
 Rettenmaier, Daniel, et al. "Load balanced 2D and 3D adaptive mesh refinement in OpenFOAM." SoftwareX 10 (2019): 100317.
 
@@ -13,19 +13,19 @@ https://www.sciencedirect.com/science/article/pii/S2352711018301699
 
 port to the OpenFOAM+ version v1812 and v2006,v2012
 
-refinement selection algoritm is based on foam extended 4.1
+refinement selection algorithm is based on foam extended 4.1
 
 ## Getting Started
 
 install OpenFOAM v1812 and v2006
 
-compile the library
+Compile the library
 ```
 ./Allwmake
 ```
-in case of v2012:
+in case of v2012 and later:
 ```
-git checkout v2012
+git checkout OF2306
 ./Allwmake
 ```
 ### Prerequisites
@@ -45,7 +45,7 @@ https://www.openfoam.com/download/release-history.php
 ```
 ### Usage
 
-add following lines to the contolDict:
+add the following lines to the contolDict:
 ```
 libs
 (
