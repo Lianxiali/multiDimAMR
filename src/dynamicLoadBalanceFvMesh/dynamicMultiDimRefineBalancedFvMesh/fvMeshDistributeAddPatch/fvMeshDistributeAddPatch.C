@@ -1479,7 +1479,8 @@ void Foam::fvMeshDistributeAddPatch::sendMesh
     // Send
     toDomain
         << mesh.points()
-        << CompactListList<label, face>(mesh.faces())
+//        << CompactListList<label, face>(mesh.faces())//original
+	<< CompactListList<label>::pack<face>(mesh.faces()) // LX July 2 2024
         << mesh.faceOwner()
         << mesh.faceNeighbour()
         << mesh.boundaryMesh()
@@ -1521,7 +1522,8 @@ Foam::autoPtr<Foam::fvMesh> Foam::fvMeshDistributeAddPatch::receiveMesh
 )
 {
     pointField domainPoints(fromNbr);
-    faceList domainFaces = CompactListList<label, face>(fromNbr)();
+    // faceList domainFaces = CompactListList<label, face>(fromNbr)(); // original
+    faceList domainFaces = CompactListList<label>(fromNbr).unpack<face>();// LX July 2 2024
     labelList domainAllOwner(fromNbr);
     labelList domainAllNeighbour(fromNbr);
     PtrList<entry> patchEntries(fromNbr);
